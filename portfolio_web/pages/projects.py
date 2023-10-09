@@ -18,6 +18,7 @@ class RepoInfo(State):
     language = ''
     topics = []
     url = ''
+    homepage = ''
 
     def get_info(self, repo_name):
         """Al pasarle el nombre del repositorio, obtiene los parametros solo para este"""
@@ -31,6 +32,7 @@ class RepoInfo(State):
                 self.language = data[i]['language']
                 self.topics = data[i]['topics']
                 self.url = data[i]['html_url']
+                self.homepage = data[i]['homepage']
 
 # Lista de repositorios que quiero mostrar en la pagina de proyectos
 projects_name = ['portfolio-web',
@@ -58,6 +60,7 @@ def get_repo_card(repo_name):
     creado = repo_info.created_at[:10]  # Extrae la parte de la fecha (YYYY-MM-DD)
     ultima_actualizacion = repo_info.updated_at[:10]  # Extrae la parte de la fecha (YYYY-MM-DD)
     tags = repo_info.topics
+    desplegada = repo_info.homepage
 
     # tags es una lista que puede contener o no tags. Entonces planteamos lo siguiente
     # si no tiene tags, ponemos fecha de creacion y ultima actualizacion. Si tiene tags
@@ -92,6 +95,14 @@ def get_repo_card(repo_name):
             wrap='wrap',
             gap='2'
         )
+    if desplegada != '':
+        boton_despliegue = rx.button(rx.link('Deployed',
+                                             href=desplegada),
+                                     bg='#4D8C63',
+                                     boxShadow="5px 5px 10px rgba(0, 0, 0, 0.2)",
+                                     color_scheme='blackAlpha')
+    else:
+        boton_despliegue = rx.box('')
 
     # Por ultimo, la funcion get_repo_card devuelve la card de cada repositorio, que contiene
     # un componente box con la descripcion del proyecto y una responsive_grid con los topcis
@@ -105,22 +116,29 @@ def get_repo_card(repo_name):
             topics,
             width='100%'
         ),
-        header=rx.heading(repo_name,
+        header=rx.flex(
+            rx.heading(repo_name,
                           size='md',
                           as_='b',
                           color='#224040'),
+            boton_despliegue,
+            justify='space-between'),
         footer=rx.grid(rx.button(rx.link('GitHub',
                                  href=repo_info.url),
-                         bg='#BAD9D6',
-                         boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)"
+                                 # bg='#BAD9D6',
+                                 boxShadow="5px 5px 10px rgba(0, 0, 0, 0.2)",
+                                 color_scheme='blackAlpha'
+
                        ),
                       rx.responsive_grid(
                           rx.box(
-                              rx.text('creado:'),
+                              rx.text('creado:',
+                                      size='xs'),
                               rx.tag(creado),
                           ),
                           rx.box(
-                              rx.text('actualizdo:'),
+                              rx.text('actualizdo:',
+                                      size='xs'),
                               rx.tag(ultima_actualizacion),
                           ),
                           columns=[1, 2],
@@ -150,7 +168,8 @@ def projects_page():
         )
     project_grid = rx.responsive_grid(
         *projects,
-        columns=[1, 3],
+        columns=[1, 2, 3, 4],
+        min_child_width='380px',
         spacing='4',
     )
     return rx.container(

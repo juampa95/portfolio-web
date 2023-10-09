@@ -2,3 +2,5 @@
 *.py[cod]
 .web
 __pycache__/
+/assets/perfil.png
+/assets/perfilcfondo.png
