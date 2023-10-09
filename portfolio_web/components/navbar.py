@@ -11,7 +11,8 @@ def navbar():
         ),
         rx.center(
             rx.menu(
-                rx.menu_button('MENU'),
+                rx.menu_button('MENU',
+                               as_='b'),
                 rx.menu_list(
                     rx.menu_item(
                         rx.link('About',

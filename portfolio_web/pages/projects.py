@@ -83,8 +83,8 @@ def get_repo_card(repo_name):
         for tag in tags:
             tag_components.append(
                 rx.tag(tag,
-                       bg='#6D6D6D',
-                       color='#EEF1F9'),
+                       bg='#345959',
+                       color='#BAD9D6'),
             )
         topics = rx.flex(
             *tag_components,
@@ -107,10 +107,11 @@ def get_repo_card(repo_name):
         ),
         header=rx.heading(repo_name,
                           size='md',
-                          as_='b'),
+                          as_='b',
+                          color='#224040'),
         footer=rx.grid(rx.button(rx.link('GitHub',
                                  href=repo_info.url),
-                         bg='lightblue',
+                         bg='#BAD9D6',
                          boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)"
                        ),
                       rx.responsive_grid(
@@ -127,9 +128,12 @@ def get_repo_card(repo_name):
                           marging_top='1rem'
                       ),
                        template_columns='1fr 2fr',
-                       gap='10'
+                       gap='10',
+                       alignItems='flex-end'
                       ),
-        bg='#A1A1A1',
+        bg='#8F9FBF',
+        marginBottom='0',
+        boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)"
     )
 
 
@@ -153,7 +157,9 @@ def projects_page():
         navbar(),
         rx.divider(),
         rx.heading('Proyectos en GitHub',
-                   margin='1rem'),
+                   margin='1rem',
+                   color='#BAD9D6'),
         project_grid,
         min_width='100%',
+        bg='#224040'
     )
