@@ -33,11 +33,11 @@ class RepoInfo(State):
                 self.url = data[i]['html_url']
 
 # Lista de repositorios que quiero mostrar en la pagina de proyectos
-projects_name = ['api-med',
+projects_name = ['portfolio-web',
+                 'api-med',
                  'api_vercel',
                  'cnn-ocr',
                  'customer-churn-ds',
-                 'lic-gob-arg-ds',
                  'ocr-project',
                  'scraping_licitaciones_gob',
                  'web_scraping',
@@ -53,8 +53,10 @@ def get_repo_card(repo_name):
     fecha de creacion y actualizacion, y los tags que tenga el repositorio. """
     repo_info = RepoInfo()
     repo_info.get_info(repo_name)
-    creado = datetime.strptime(repo_info.created_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m/%Y")
-    ultima_actualizacion = datetime.strptime(repo_info.updated_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m/%Y")
+    # creado = datetime.strptime(repo_info.created_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m/%Y")
+    # ultima_actualizacion = datetime.strptime(repo_info.updated_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m/%Y")
+    creado = repo_info.created_at[:10]  # Extrae la parte de la fecha (YYYY-MM-DD)
+    ultima_actualizacion = repo_info.updated_at[:10]  # Extrae la parte de la fecha (YYYY-MM-DD)
     tags = repo_info.topics
 
     # tags es una lista que puede contener o no tags. Entonces planteamos lo siguiente
@@ -80,13 +82,15 @@ def get_repo_card(repo_name):
         tag_components = []
         for tag in tags:
             tag_components.append(
-                rx.tag(tag)
+                rx.tag(tag,
+                       bg='#6D6D6D',
+                       color='#EEF1F9'),
             )
-        topics = rx.responsive_grid(
+        topics = rx.flex(
             *tag_components,
-            columns=[1, 3],
-            spacing='2',
-            margin_top='1rem'
+            margin_top='1rem',
+            wrap='wrap',
+            gap='2'
         )
 
     # Por ultimo, la funcion get_repo_card devuelve la card de cada repositorio, que contiene
@@ -99,15 +103,32 @@ def get_repo_card(repo_name):
             rx.text(repo_info.description,
                     size="sm"),
             topics,
+            width='100%'
         ),
         header=rx.heading(repo_name,
                           size='md',
                           as_='b'),
-        footer=rx.button(rx.link('GitHub',
+        footer=rx.grid(rx.button(rx.link('GitHub',
                                  href=repo_info.url),
                          bg='lightblue',
                          boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)"
                        ),
+                      rx.responsive_grid(
+                          rx.box(
+                              rx.text('creado:'),
+                              rx.tag(creado),
+                          ),
+                          rx.box(
+                              rx.text('actualizdo:'),
+                              rx.tag(ultima_actualizacion),
+                          ),
+                          columns=[1, 2],
+                          spacing='3',
+                          marging_top='1rem'
+                      ),
+                       template_columns='1fr 2fr',
+                       gap='10'
+                      ),
         bg='#A1A1A1',
     )
 
