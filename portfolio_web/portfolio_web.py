@@ -14,29 +14,12 @@ from portfolio_web.pages.index import index_page
 from portfolio_web.base_state import State
 
 
-def index():
-    return rx.container(
-        navbar(),
-        rx.divider(),
-        header(),
-        min_width='100%'
-    )
-
-
-def about():
-    return rx.container(
-        navbar(),
-        rx.divider(),
-        min_width='100%'
-    )
-
 
 app = rx.App(
     style=styles.BASE_STYLE,
     stylesheets=styles.STYLESHEETS,
 )
 
-app.add_page(index)
 app.add_page(index_page, route='/aboutpage')
 app.add_page(exp_page, route='/experience')
 app.add_page(projects_page, route='/projects')

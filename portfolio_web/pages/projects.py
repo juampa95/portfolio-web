@@ -182,3 +182,4 @@ def projects_page():
         min_width='100%',
         bg='#224040'
     )
+

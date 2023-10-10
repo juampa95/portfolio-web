@@ -1,9 +1,9 @@
 import reflex as rx
 from datetime import datetime, timedelta
 
-from portfolio_web.base_state import State
-from portfolio_web.components.navbar import navbar
-from portfolio_web.styles import styles
+from portfolio_web.components.boton_contacto import boton_contacto
+from portfolio_web.components.boton_descarga import boton_descarga
+
 
 p1 = rx.box(rx.text('Hola, soy:', color='white'),
             rx.text('Juan Pablo', as_='b', color='#BAD9D6', fontSize='6xl'),
@@ -59,8 +59,8 @@ p2 = rx.hstack(rx.box(rx.image(src='/perfilrecorte.png'),
                                        variant='solid'),
                             bio,
                             rx.stack(
-                                rx.button('Descargar CV', bg='#BAD9D6', size='sm'),
-                                rx.button('Enviar email', bg='#BAD9D6', size='sm'),
+                                boton_descarga,
+                                boton_contacto,
                                 direction='row',
                                 justify='left',
                                 margin_top='1em',
@@ -73,6 +73,11 @@ p2 = rx.hstack(rx.box(rx.image(src='/perfilrecorte.png'),
                display='flex',
                # min_width=["15em", "15em", "15em", "20em", "20em"]
                )
+
+p3 = rx.stack(rx.box('Proyectos GitHub'),
+              rx.button(rx.link('Link',
+                                href='/projects')),
+              direction='row')
 
 flex = rx.box(
     rx.flex(rx.flex(p1, bg='#224040', h='100%', width='70%', align='center', justify='center'),
@@ -89,7 +94,7 @@ flex = rx.box(
             position='relative'),
     rx.flex(rx.flex(p2, bg='#345959', width='100%'),
             height='45%'),
-    rx.flex(rx.box(bg='#224040', width='100%'),
+    rx.flex(rx.box(p3, bg='#224040', width='100%'),
             height='15%', ),
     width='100%',
     h='100vh'
