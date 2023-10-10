@@ -5,42 +5,17 @@ from portfolio_web.base_state import State
 from portfolio_web.components.navbar import navbar
 from portfolio_web.styles import styles
 
-grilla = rx.grid(
-    rx.grid_item(row_span=2, col_span=14, bg='#224040',),
-    rx.grid_item(row_span=2, col_span=6, bg='#BAD9D6',),
-    rx.grid_item(row_span=6, col_span=12, bg='#224040', ),
-    rx.grid_item(rx.flex(rx.box('',bg='#224040',h='100%', width='50%'),
-                         rx.box('',bg='#BAD9D6',h='100%', width='50%'),
-                         rx.flex(rx.image(src='/perfil.png'),
-                                 align='end',
-                                 justify='center',
-                                 position='absolute',
-                                 width='100%'),
-                        align='end',
-                        height='100%',
-                        position='relative'),
-                 row_span=6, col_span=4 ,
-                 ),
-    rx.grid_item(row_span=6, col_span=4, bg='#BAD9D6', ),
-    rx.grid_item(row_span=8, col_span=20, bg='#345959',),
-    rx.grid_item(row_span=4, col_span=20, bg='#224040',),
-    template_rows="repeat(20, 1fr)",
-    template_columns="repeat(20, 1fr)",
-    h='100vh',
-    width='100%',
-    gap=0
-                 )
-
 p1 = rx.box(rx.text('Hola, soy:', color='white'),
-            rx.text('Juan Pablo', as_='b', color='#BAD9D6',fontSize='6xl'),
+            rx.text('Juan Pablo', as_='b', color='#BAD9D6', fontSize='6xl'),
             rx.text('Ingeniero &', color='white', fontSize='xl'),
             rx.text('Cientifico de datos JR', color='white', fontSize='xl')
             )
 
+
 def delta_time(desde):
     dif = datetime.now() - datetime.strptime(desde, "%Y-%m-%d")
     anios = int(dif.days / 365)
-    meses = int(dif.days % 365)//30
+    meses = int(dif.days % 365) // 30
     if anios == 0:
         if meses == 0:
             return 'nada'
@@ -65,17 +40,18 @@ def delta_time(desde):
 
 
 bio = rx.box(rx.text('Profesional data-driven orientado a la '
-              'resolución de problemas mediante innovación continua' ),
+                     'resolución de problemas mediante innovación continua'),
              rx.divider(width=0),
-             rx.text(f'Desde hace {delta_time("2022-08-19")} trabajo como ingeniero'
+             rx.text(f'Desde hace {delta_time("2022-08-19")} trabajo como ingeniero '
                      f'en el departamento tecnico de una empresa local realizando diferentes'
                      f'tareas orientadas a la gestion de proyectos e innovacion de equipos'
-                     ,font_size='0.8em'),
+                     , font_size='0.8em'),
              rx.text(f'Llevo {delta_time("2021-10-10")} capacitandome en Python, Data y '
                      f'Machine-learning ', font_size='0.8em'))
 
 p2 = rx.hstack(rx.box(rx.image(src='/perfilrecorte.png'),
-                      width='25%', align='center', justify='center',
+                      width=['50%','40%','35%','30%','25%'],
+                      display=["none", "none", "flex", "flex", "flex"],
                       boxShadow="5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(11, 111, 111, 0.8)"
                       ),
                rx.container(rx.heading('About Me'),
@@ -83,16 +59,19 @@ p2 = rx.hstack(rx.box(rx.image(src='/perfilrecorte.png'),
                                        variant='solid'),
                             bio,
                             rx.stack(
-                                rx.button('Descargar CV', bg='#BAD9D6'),
-                                rx.button('Enviar email', bg='#BAD9D6'),
+                                rx.button('Descargar CV', bg='#BAD9D6', size='sm'),
+                                rx.button('Enviar email', bg='#BAD9D6', size='sm'),
                                 direction='row',
-                                justify='center',
-                                margin_top='5px'
+                                justify='left',
+                                margin_top='1em',
+                                gap=3,
                             ),
                             ),
-               left='20%',
+               left=['2%','5%','10%','15%','20%'],
                position='relative',
-               width='70%'
+               width=['100%','90%','80%','75%','70%'],
+               display='flex',
+               # min_width=["15em", "15em", "15em", "20em", "20em"]
                )
 
 flex = rx.box(
@@ -101,17 +80,17 @@ flex = rx.box(
             rx.flex(rx.image(src='/perfil.png'),
                     align='end',
                     position='absolute',
-                    width='30%',
-                    left='56%'),
+                    width=['50%','45%','40%','35%','30%'],
+                    left=['45%','48%','50%','52%','56%'],
+                    display=['none','flex','flex','flex','flex']),
             align='end',
             height='40%',
             width='100%',
             position='relative'),
-    rx.flex(rx.flex(p2,bg='#345959', width='100%',
-                    left='20%'),
+    rx.flex(rx.flex(p2, bg='#345959', width='100%'),
             height='45%'),
     rx.flex(rx.box(bg='#224040', width='100%'),
-            height='15%',),
+            height='15%', ),
     width='100%',
     h='100vh'
 
@@ -124,5 +103,4 @@ def index_page():
         # rx.divider(),
         flex,
         min_width='100%',
-        # bg='#224040',
     )

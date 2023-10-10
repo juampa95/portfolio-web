@@ -32,3 +32,6 @@ def navbar():
         justify_content='space-between',
         min_width='90%'
     )
+
+def navbar2():
+    return
