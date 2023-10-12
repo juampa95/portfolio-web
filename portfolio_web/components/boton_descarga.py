@@ -24,10 +24,13 @@ boton_descarga = rx.box(
                         'Cancelar', on_click=ModalState.change,
                         bg='#D9BABA', size='sm'
                     ),
-                    rx.button(rx.link('Descargar', href='/CV_IT_1.pdf',
-                                      is_external=True),
-                              on_click=ModalState.change,
-                              bg='#BAD9D6', size='sm'
+                    rx.link(rx.button('Descargar',
+                                      bg='#BAD9D6',
+                                      size='sm',
+                                      on_click=ModalState.change,
+                                      ),
+                            href='/CV_IT_1.pdf',
+                            is_external=True,
                     ),
                     direction='row',
                     justify='left',

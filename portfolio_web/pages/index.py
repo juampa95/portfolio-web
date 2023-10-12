@@ -1,8 +1,9 @@
 import reflex as rx
-from datetime import datetime, timedelta
 
 from portfolio_web.components.boton_contacto import boton_contacto
 from portfolio_web.components.boton_descarga import boton_descarga
+from portfolio_web.utilitys.delta_time import delta_time
+from portfolio_web.components.box_link import box_link
 
 
 p1 = rx.box(rx.text('Hola, soy:', color='white'),
@@ -12,39 +13,12 @@ p1 = rx.box(rx.text('Hola, soy:', color='white'),
             )
 
 
-def delta_time(desde):
-    dif = datetime.now() - datetime.strptime(desde, "%Y-%m-%d")
-    anios = int(dif.days / 365)
-    meses = int(dif.days % 365) // 30
-    if anios == 0:
-        if meses == 0:
-            return 'nada'
-        elif meses == 1:
-            return f'{meses} mes'
-        else:
-            return f'{meses} meses'
-    elif anios == 1:
-        if meses == 0:
-            return f'{anios} año'
-        elif meses == 1:
-            return f'{anios} año y {meses} mes'
-        else:
-            return f'{anios} año y {meses} meses'
-    else:
-        if meses == 0:
-            return f'{anios} años'
-        elif meses == 1:
-            return f'{anios} años y {meses} mes'
-        else:
-            return f'{anios} años y {meses} meses'
-
-
 bio = rx.box(rx.text('Profesional data-driven orientado a la '
                      'resolución de problemas mediante innovación continua'),
              rx.divider(width=0),
              rx.text(f'Desde hace {delta_time("2022-08-19")} trabajo como ingeniero '
                      f'en el departamento tecnico de una empresa local realizando diferentes'
-                     f'tareas orientadas a la gestion de proyectos e innovacion de equipos'
+                     f'tareas orientadas a la gestion de proyectos e innovacion de equipos y procesos'
                      , font_size='0.8em'),
              rx.text(f'Llevo {delta_time("2021-10-10")} capacitandome en Python, Data y '
                      f'Machine-learning ', font_size='0.8em'))
@@ -74,12 +48,14 @@ p2 = rx.hstack(rx.box(rx.image(src='/perfilrecorte.png'),
                # min_width=["15em", "15em", "15em", "20em", "20em"]
                )
 
-p3 = rx.stack(rx.box('Proyectos GitHub'),
-              rx.button(rx.link('Link',
-                                href='/projects')),
-              direction='row')
+p3 = rx.stack(box_link('Proyectos Github',
+                       '/projects'),
+              box_link('Experiencia',
+                       'experience'),
+              direction='row',
+              height='100%')
 
-flex = rx.box(
+index = rx.box(
     rx.flex(rx.flex(p1, bg='#224040', h='100%', width='70%', align='center', justify='center'),
             rx.box(bg='#BAD9D6', h='100%', width='30%'),
             rx.flex(rx.image(src='/perfil.png'),
@@ -106,6 +82,6 @@ def index_page():
     return rx.box(
         # navbar(),
         # rx.divider(),
-        flex,
+        index,
         min_width='100%',
     )

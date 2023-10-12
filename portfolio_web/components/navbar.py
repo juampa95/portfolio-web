@@ -6,7 +6,7 @@ def navbar():
         rx.box(
             rx.link(
                 rx.image(src='/portafolio.png',width='50px',),
-                href='/'
+                href='/aboutpage'
             )
         ),
         rx.center(
@@ -14,17 +14,17 @@ def navbar():
                 rx.menu_button('MENU',
                                as_='b'),
                 rx.menu_list(
-                    rx.menu_item(
-                        rx.link('About',
-                                href='/aboutpage')
+                    rx.link(
+                        rx.menu_item('About'),
+                                href='/aboutpage'
                     ),
-                    rx.menu_item(
-                        rx.link('Experience',
-                                href='/experience'),
+                    rx.link(
+                        rx.menu_item('Experience'),
+                                href='/experience',
                     ),
-                    rx.menu_item(
-                        rx.link('Projects',
-                                href='/projects'),
+                    rx.link(
+                        rx.menu_item('Projects'),
+                                href='/projects',
                     )
                 )
             )
