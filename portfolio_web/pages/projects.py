@@ -1,8 +1,37 @@
 import reflex as rx
 
-from portfolio_web.components.navbar import navbar
+from portfolio_web.components.navbar import navbar, navbar2
 from portfolio_web.styles import styles
 from portfolio_web.views.projects_grid.project_cards_grid import get_repo_card
+
+def barra_inf():
+    return rx.stack(
+        rx.link(
+            rx.vstack(
+                rx.text('VER TODOS LOS PROYECTOS',
+                                    size='md',
+                                    as_='b',
+                                    color='#BAD9D6'
+                                    ),
+                rx.image(src='/github_icon.svg',
+                         width='100px'),
+                height='100%',
+                justify_content='center'
+                ),
+            href='https://github.com/juampa95',
+            is_external=True
+        ),
+        rx.image(src='https://github-readme-stats.vercel.app/api?username=juampa95&theme=dark&show_icons=true&locale=es',
+                 width=['300px','300px','467px','467px','467px'],
+                 display=['none','none','flex','flex','flex']),
+        # rx.image(src='https://github-readme-stats.vercel.app/api/top-langs/?username=juampa95&theme=dark&show_icons=true&locale=es'),
+        direction='row',
+        align='center',
+        justify_content='center',
+        widht='100%',
+        spacing='20px',
+        padding_bottom='10px')
+
 
 projects_name = ['portfolio-web',
                  'api-med',
@@ -31,15 +60,18 @@ def projects_page():
         columns=[1, 2, 3, 4],
         min_child_width='380px',
         spacing='4',
+        margin=5
     )
     return rx.container(
-        navbar(),
-        rx.divider(),
+        navbar2('projects'),
         rx.heading('Proyectos en GitHub',
                    margin='1rem',
                    color='#BAD9D6'),
         project_grid,
+        barra_inf(),
         min_width='100%',
-        bg='#224040'
+        bg='#224040',
+        margin=0,
+        padding=0
     )
 

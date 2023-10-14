@@ -75,7 +75,7 @@ def get_repo_card(repo_name):
             *tag_components,
             margin_top='1rem',
             wrap='wrap',
-            gap='2'
+            gap='2',
         )
     if desplegada != '':
         boton_despliegue = rx.link(rx.button('Deployed',
@@ -99,7 +99,8 @@ def get_repo_card(repo_name):
             rx.text(repo_info.description,
                     size="sm"),
             topics,
-            width='100%'
+            width='100%',
+            margin_bottom=0,
         ),
         header=rx.flex(
             rx.heading(repo_name,
@@ -127,11 +128,11 @@ def get_repo_card(repo_name):
                           ),
                           columns=[1, 2],
                           spacing='3',
-                          marging_top='1rem'
                       ),
                        template_columns='1fr 2fr',
                        gap='10',
-                       alignItems='flex-end'
+                       alignItems='flex-end',
+                       # margin_top='1rem',
                       ),
         bg='#BAD9D6',
         marginBottom='0',
