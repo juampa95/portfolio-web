@@ -1,5 +1,5 @@
 import reflex as rx
-from portfolio_web.views.experience.footer import footer
+from portfolio_web.views.experience.footer import card_footer
 
 with open('portfolio_web/views/experience/2015exp.md', 'r') as data:
     info2015 = data.read()
@@ -11,8 +11,8 @@ with open('portfolio_web/views/experience/2022exp.md', 'r') as data:
     info2022 = data.read()
 
 
-hard2015 = ['Excel','Word','Contabilidad','Matematicas']
-soft2015 = ['Responsabilidad','Atencion al publico','Comunicacion efectiva']
+hard2015 = ['Excel','Word','Contabilidad','Matematicas', 'Tango gestion']
+soft2015 = ['Responsabilidad','Atencion al publico','Comunicacion efectiva', 'Marketing', 'e-commerce']
 
 exp2015 = rx.card(
     rx.markdown(info2015),
@@ -21,7 +21,7 @@ exp2015 = rx.card(
                    as_='b',
                    color='#224040'
                    ),
-    footer=footer(hard2015, soft2015),
+    footer=card_footer(hard2015, soft2015),
     width='85%',
     bg='#BAD9D6',
     marginBottom='0',
@@ -29,8 +29,9 @@ exp2015 = rx.card(
 
 )
 
-hard2021 = ['Excel','Word','SQL']
-soft2021 = ['Trabajo en Equipo', 'Lider', 'Responsabilidad']
+hard2021 = ['Excel','Word', 'Tango Gestion', 'Matematicas financieras', 'Contabilidad']
+soft2021 = ['Trato con proveedores', 'Manejo de Caja', 'Responsabilidad', 'Pagos', 'Cheques y bancos',
+            'Marketing', 'e-commerce']
 
 exp2021 = rx.card(
     rx.markdown(info2021),
@@ -39,7 +40,7 @@ exp2021 = rx.card(
                    as_='b',
                    color='#224040'
                    ),
-    footer=footer(hard2021, soft2021),
+    footer=card_footer(hard2021, soft2021),
     width='85%',
     bg='#BAD9D6',
     marginBottom='0',
@@ -47,8 +48,9 @@ exp2021 = rx.card(
 
 )
 
-hard2022 = ['Excel','Word','SQL','Matematicas','Python']
-soft2022 = ['Trabajo en Equipo', 'Lider', 'Responsabilidad','Manejo de personal','Planificacion']
+hard2022 = ['Excel','Word','SQL','Matematicas','Python', 'Logica', 'Resolucion de problemas']
+soft2022 = ['Trabajo en Equipo', 'Lider', 'Responsabilidad','Manejo de personal','Planificacion', 'Oratoria',
+            'Pensamiento critico', 'Toma de decisiones']
 
 exp2022 = rx.card(
     rx.markdown(info2022),
@@ -57,7 +59,7 @@ exp2022 = rx.card(
                    as_='b',
                    color='#224040'
                    ),
-    footer=footer(hard2022, soft2022),
+    footer=card_footer(hard2022, soft2022),
     width='85%',
     bg='#BAD9D6',
     marginBottom='0',

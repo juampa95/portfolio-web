@@ -1,6 +1,26 @@
 import reflex as rx
 
 
+
+def footer():
+    r = rx.link(rx.center(rx.heading('Descargar CV',
+                                     transition='font-size 0.3s',
+                                     _hover={'font-size': '3em'}),
+                          ),
+                href='/CV_IT_1.pdf',
+                width='100%',
+                opacity='0.5',
+                bg='#224040',
+                is_external=True,
+                transition='opacity 0.3s',
+                _hover={'opacity': 1,
+                        'background-color': '#BAD9D6'
+                        }
+                )
+
+    return r
+
+
 def tags_grid(tags):
     tag_components = []
     for tag in tags:
@@ -18,7 +38,7 @@ def tags_grid(tags):
     return topics
 
 
-def footer(hard,soft):
+def card_footer(hard,soft):
     return rx.vstack(
         rx.text('Hard Skills Utilizados',
                 as_='b'),

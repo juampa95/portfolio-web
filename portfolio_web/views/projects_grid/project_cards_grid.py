@@ -81,7 +81,9 @@ def get_repo_card(repo_name):
         boton_despliegue = rx.link(rx.button('Deployed',
                                              bg='#4D8C63',
                                              boxShadow="5px 5px 10px rgba(0, 0, 0, 0.2)",
-                                             color_scheme='blackAlpha'
+                                             # color_scheme='blackAlpha'
+                                             _hover={'opacity': 1,
+                                                     'background-color': '#99D959'}
                                              ),
                                    href=desplegada
                                    )

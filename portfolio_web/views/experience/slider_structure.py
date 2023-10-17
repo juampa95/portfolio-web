@@ -34,15 +34,33 @@ def slider():
             width='50px',
         ),
         rx.vstack(
-            rx.box(rx.text('EXP3'),
-                   height='10%'),
-            rx.box(rx.text('EXP2'),
-                   height='10%'),
-            rx.box(rx.text('EXP1'),
-                   height='80%'),
+            rx.flex(rx.text('INGENIERO INDUSTRIAL',
+                            as_='b',
+                            font_size='xs',
+                            transform='rotate(270deg)'),
+                    height='19%',
+                    align='center'),
+            rx.divider(),
+            rx.flex(rx.text('ENCARGADO',
+                            as_='b',
+                            font_size='xs',
+                            transform='rotate(270deg)'
+                            ),
+                    height='19%',
+                    align='center'),
+            rx.divider(),
+            rx.flex(rx.text('ADMINISTRATIVO CONTABLE',
+                            as_='b',
+                            font_size='xs',
+                            transform={'rotate(270deg)'},
+                            ),
+                    height='62%',
+                    align='center'),
             height='500px',
+            width='50px',
 
-        )
+        ),
+        spacing='0'
     )
 
 def body():
