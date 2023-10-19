@@ -1,8 +1,8 @@
 *.db
 *.py[cod]
 .web
-__pycache__/
+/assets/CV_IT_1.pdf
 /assets/perfil.png
 /assets/perfilcfondo.png
 /assets/perfilrecorte.png
-/assets/CV_IT_1.pdf
+__pycache__/
