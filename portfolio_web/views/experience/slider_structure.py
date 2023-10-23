@@ -4,6 +4,8 @@ from portfolio_web.components.navbar import navbar2
 from portfolio_web.base_state import State
 from portfolio_web.styles import styles
 from portfolio_web.views.experience.experience_content import exp2015, exp2021, exp2022
+from portfolio_web.styles.colors import colors as c
+color_principal = 'spectra'
 
 
 class SliderState(State):
@@ -17,12 +19,12 @@ def slider():
                        size='md',
                        margin_bottom='10px'),
             rx.slider(rx.slider_track(
-                    rx.slider_filled_track(bg='#BAD9D6'),
-                    bg='#345959',
+                    rx.slider_filled_track(bg=c[color_principal]['200']),
+                    bg=c[color_principal]['700'],
                 ),
                 rx.slider_thumb(
                     box_size='1.5em',
-                    bg='#BAD9D6'),
+                    bg=c[color_principal]['200']),
                 # rx.slider_mark(), # No tengo como posicionarlos
                 on_change=SliderState.set_value,
                 orientation='vertical',

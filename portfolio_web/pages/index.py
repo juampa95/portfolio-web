@@ -4,12 +4,14 @@ from portfolio_web.components.boton_contacto import boton_contacto
 from portfolio_web.components.boton_descarga import boton_descarga
 from portfolio_web.utilitys.delta_time import delta_time
 from portfolio_web.components.box_link import box_link
+from portfolio_web.styles.colors import colors as c
+color_principal = 'spectra'
 
 
-p1 = rx.box(rx.text('Hola, soy:', color='white'),
-            rx.text('Juan Pablo', as_='b', color='#BAD9D6', fontSize='6xl'),
-            rx.text('Ingeniero &', color='white', fontSize='xl'),
-            rx.text('Cientifico de datos JR', color='white', fontSize='xl')
+p1 = rx.box(rx.text('Hola, soy:', color=c['white']),
+            rx.text('Juan Pablo', as_='b', color=c[color_principal]['300'], fontSize='6xl'),
+            rx.text('Ingeniero &', color=c['white'], fontSize='xl'),
+            rx.text('Cientifico de datos JR', color=c['white'], fontSize='xl')
             )
 
 
@@ -28,7 +30,7 @@ p2 = rx.hstack(rx.box(rx.image(src='/perfilrecorte.png'),
                       display=["none", "none", "flex", "flex", "flex"],
                       boxShadow="5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(11, 111, 111, 0.8)"
                       ),
-               rx.container(rx.heading('About Me'),
+               rx.container(rx.heading('Sobre Mi'),
                             rx.divider(width='15%',
                                        variant='solid'),
                             bio,
@@ -56,8 +58,8 @@ p3 = rx.stack(box_link('Proyectos Github',
               height='100%')
 
 index = rx.box(
-    rx.flex(rx.flex(p1, bg='#224040', h='100%', width='70%', align='center', justify='center'),
-            rx.box(bg='#BAD9D6', h='100%', width='30%'),
+    rx.flex(rx.flex(p1, bg=c[color_principal]['900'], h='100%', width='70%', align='center', justify='center'),
+            rx.box(bg=c[color_principal]['100'], h='100%', width='30%'),
             rx.flex(rx.image(src='/perfil.png'),
                     align='end',
                     position='absolute',
@@ -68,9 +70,9 @@ index = rx.box(
             height='40%',
             width='100%',
             position='relative'),
-    rx.flex(rx.flex(p2, bg='#345959', width='100%'),
+    rx.flex(rx.flex(p2, bg=c[color_principal]['700'], width='100%'),
             height='45%'),
-    rx.flex(rx.box(p3, bg='#224040', width='100%'),
+    rx.flex(rx.box(p3, bg=c[color_principal]['900'], width='100%'),
             height='15%', ),
     width='100%',
     h='100vh'

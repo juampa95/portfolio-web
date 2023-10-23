@@ -1,5 +1,8 @@
 import reflex as rx
 from portfolio_web.base_state import State
+from portfolio_web.styles.colors import colors as c
+color_principal = 'spectra'
+color_secundario = 'cavern-pink'
 
 
 class ModalState(State):
@@ -10,7 +13,7 @@ class ModalState(State):
 
 
 boton_descarga = rx.box(
-    rx.button('Descargar CV', bg='#BAD9D6', size='sm',
+    rx.button('Descargar CV', bg=c[color_principal]['200'], size='sm',
               on_click=ModalState.change),
     rx.modal(
         rx.modal_overlay(
@@ -22,10 +25,10 @@ boton_descarga = rx.box(
                 rx.modal_footer(
                     rx.button(
                         'Cancelar', on_click=ModalState.change,
-                        bg='#D9BABA', size='sm'
+                        bg=c[color_secundario]['300'], size='sm'
                     ),
                     rx.link(rx.button('Descargar',
-                                      bg='#BAD9D6',
+                                      bg=c[color_principal]['200'],
                                       size='sm',
                                       on_click=ModalState.change,
                                       ),

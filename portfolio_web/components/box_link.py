@@ -1,4 +1,6 @@
 import reflex as rx
+from portfolio_web.styles.colors import colors as c
+color_principal = 'spectra'
 
 
 def box_link(text:str, url:str):
@@ -12,6 +14,6 @@ def box_link(text:str, url:str):
                       opacity='0.5',
                       transition='opacity 0.3s',
                       _hover={'opacity': 1,
-                              'background-color':'#BAD9D6'
+                              'background-color': c[color_principal]['200']
                               }
                       )

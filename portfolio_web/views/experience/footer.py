@@ -1,20 +1,21 @@
 import reflex as rx
-
+from portfolio_web.styles.colors import colors as c
+color_principal = 'spectra'
 
 
 def footer():
     r = rx.link(rx.center(rx.heading('Descargar CV',
                                      transition='font-size 0.3s',
-                                     _hover={'font-size': '3em'}),
+                                     _hover={'font-size': '2.5em'}),
                           ),
                 href='/CV_IT_1.pdf',
                 width='100%',
                 opacity='0.5',
-                bg='#224040',
+                bg=c[color_principal]['900'],
                 is_external=True,
                 transition='opacity 0.3s',
                 _hover={'opacity': 1,
-                        'background-color': '#BAD9D6'
+                        'background-color': c[color_principal]['200']
                         }
                 )
 
@@ -27,7 +28,7 @@ def tags_grid(tags):
         tag_components.append(
             rx.tag(tag,
                    bg='#345959',
-                   color='#BAD9D6'),
+                   color=c[color_principal]['200']),
         )
     topics = rx.flex(
         *tag_components,

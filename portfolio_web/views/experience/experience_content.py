@@ -1,5 +1,8 @@
 import reflex as rx
 from portfolio_web.views.experience.footer import card_footer
+from portfolio_web.styles.colors import colors as c
+color_principal = 'spectra'
+
 
 with open('portfolio_web/views/experience/2015exp.md', 'r') as data:
     info2015 = data.read()
@@ -19,11 +22,11 @@ exp2015 = rx.card(
     header=rx.text('Administrativo contable semi-senior. [2015-2021]',
                    font_size='2xl',
                    as_='b',
-                   color='#224040'
+                   color=c[color_principal]['800']
                    ),
     footer=card_footer(hard2015, soft2015),
     width='85%',
-    bg='#BAD9D6',
+    bg=c[color_principal]['200'],
     marginBottom='0',
     boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)",
 
@@ -38,11 +41,11 @@ exp2021 = rx.card(
     header=rx.text('Encargado de pagos & administrativo junior [2021-2022]',
                    font_size='2xl',
                    as_='b',
-                   color='#224040'
+                   color=c[color_principal]['800']
                    ),
     footer=card_footer(hard2021, soft2021),
     width='85%',
-    bg='#BAD9D6',
+    bg=c[color_principal]['200'],
     marginBottom='0',
     boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)",
 
@@ -57,11 +60,11 @@ exp2022 = rx.card(
     header=rx.text('Ingeniero industrial junior - oficina técnica [2022-Actualidad]',
                    font_size='2xl',
                    as_='b',
-                   color='#224040'
+                   color=c[color_principal]['800']
                    ),
     footer=card_footer(hard2022, soft2022),
     width='85%',
-    bg='#BAD9D6',
+    bg=c[color_principal]['200'],
     marginBottom='0',
     boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)",
 

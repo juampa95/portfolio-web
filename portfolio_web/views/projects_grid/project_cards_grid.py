@@ -2,6 +2,9 @@ import reflex as rx
 import json
 
 from portfolio_web.base_state import State
+from portfolio_web.styles.colors import colors as c
+color_principal = 'spectra'
+
 
 class RepoInfo(State):
     """Clase que obtiene los parametros deseados de los repositorios
@@ -68,8 +71,8 @@ def get_repo_card(repo_name):
         for tag in tags:
             tag_components.append(
                 rx.tag(tag,
-                       bg='#345959',
-                       color='#BAD9D6'),
+                       bg=c[color_principal]['700'],
+                       color=c[color_principal]['200']),
             )
         topics = rx.flex(
             *tag_components,
@@ -108,7 +111,7 @@ def get_repo_card(repo_name):
             rx.heading(repo_name,
                           size='md',
                           as_='b',
-                          color='#224040'),
+                          color=c[color_principal]['800']),
             boton_despliegue,
             justify='space-between'),
         footer=rx.grid(rx.link(rx.button('GitHub',
@@ -136,12 +139,12 @@ def get_repo_card(repo_name):
                        alignItems='flex-end',
                        # margin_top='1rem',
                       ),
-        bg='#BAD9D6',
+        bg=c[color_principal]['200'],
         marginBottom='0',
         boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)",
         opacity=0.8,
         transition= 'background-color 0.3s, box-shadow 0.3s, opacity 0.3s',
         _hover={'opacity':1,
-                'background-color':'#BAD9D6',
+                'background-color':c[color_principal]['200'],
                 'box-shadow': '0 0 20px rgba(0, 0, 0, 0.5)'}
     )
