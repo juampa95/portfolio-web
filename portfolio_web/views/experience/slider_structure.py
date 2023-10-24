@@ -17,7 +17,8 @@ def slider():
         rx.vstack(
             rx.heading(SliderState.value,
                        size='md',
-                       margin_bottom='10px'),
+                       margin_bottom='10px',
+                       color=c[color_principal]['200']),
             rx.slider(rx.slider_track(
                     rx.slider_filled_track(bg=c[color_principal]['200']),
                     bg=c[color_principal]['700'],
@@ -37,23 +38,23 @@ def slider():
         ),
         rx.vstack(
             rx.flex(rx.text('INGENIERO INDUSTRIAL',
-                            as_='b',
                             font_size='xs',
-                            transform='rotate(270deg)'),
+                            transform='rotate(270deg)',
+                            color=c[color_principal]['200']),
                     height='19%',
                     align='center'),
             rx.divider(),
             rx.flex(rx.text('ENCARGADO',
-                            as_='b',
                             font_size='xs',
+                            color=c[color_principal]['200'],
                             transform='rotate(270deg)'
                             ),
                     height='19%',
                     align='center'),
             rx.divider(),
             rx.flex(rx.text('ADMINISTRATIVO CONTABLE',
-                            as_='b',
                             font_size='xs',
+                            color=c[color_principal]['200'],
                             transform={'rotate(270deg)'},
                             ),
                     height='62%',
@@ -62,7 +63,7 @@ def slider():
             width='50px',
 
         ),
-        spacing='0'
+        spacing='0',
     )
 
 def body():
@@ -77,7 +78,10 @@ def body():
 
 
 page = rx.hstack(
-    slider(),
     body(),
-    width='100%'
+    slider(),
+    width='95%',
+    justify_content='right',
+    margin=0,
+    padding=0
 )

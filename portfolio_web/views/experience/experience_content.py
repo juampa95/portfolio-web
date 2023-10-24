@@ -25,7 +25,7 @@ exp2015 = rx.card(
                    color=c[color_principal]['800']
                    ),
     footer=card_footer(hard2015, soft2015),
-    width='85%',
+    width='95%',
     bg=c[color_principal]['200'],
     marginBottom='0',
     boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)",
@@ -44,7 +44,7 @@ exp2021 = rx.card(
                    color=c[color_principal]['800']
                    ),
     footer=card_footer(hard2021, soft2021),
-    width='85%',
+    width='95%',
     bg=c[color_principal]['200'],
     marginBottom='0',
     boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)",
@@ -63,7 +63,7 @@ exp2022 = rx.card(
                    color=c[color_principal]['800']
                    ),
     footer=card_footer(hard2022, soft2022),
-    width='85%',
+    width='95%',
     bg=c[color_principal]['200'],
     marginBottom='0',
     boxShadow="10px 10px 20px rgba(0, 0, 0, 0.2)",

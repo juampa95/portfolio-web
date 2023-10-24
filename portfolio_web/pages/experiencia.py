@@ -20,7 +20,7 @@ def exp_page():
         header,
         page,
         footer(),
-        min_width='100%',
+        width='100%',
         height='100vh',
         bg=c[color_principal]['900'],
         margin=0,
